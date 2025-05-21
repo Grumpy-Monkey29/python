@@ -57,3 +57,10 @@ You start looking at:
   - Uses the score and threshold to say -1 = anomaly or 1 = normal
 ---
 - The model isn’t judging based on your definition of weird — it’s judging based on what it learned from the data you gave it.
+- 🎯 contamination is a blind assumption
+- It tells the model:
+- "Please label this proportion of the data as anomalies, no matter what."
+- 🔍 What Happens Internally?
+  - The model learns what “normal” looks like (based on isolation depth).
+  - But when you call predict(), it uses the contamination value to set a threshold on anomaly scores.
+  - It then forces that percentage of the data (10%) to be labeled as -1 (anomalous) — even if they’re not truly weird in your domain.
