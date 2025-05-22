@@ -14,7 +14,10 @@
 
 
 - When you apply model.predict() or model.decision_function(), it's assigning a score or classification based on this learned structure, not on a pre-defined notion of what an "anomaly" is in your domain.
-
+- the `anomaly score (from model.decision_function(X))` is defined such that:
+  - `Lower scores = more anomalous`
+  - `Higher scores = more normal`
+---
 - You're a librarian in charge of organizing books.
 - You don't know what books are bad or weird in general — you just know what most books in your library usually look like:
   1. They're mostly novels
