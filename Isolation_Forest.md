@@ -67,3 +67,17 @@ You start looking at:
   - The model learns what “normal” looks like (based on isolation depth).
   - But when you call predict(), it uses the contamination value to set a threshold on anomaly scores.
   - It then forces that percentage of the data (10%) to be labeled as -1 (anomalous) — even if they’re not truly weird in your domain.
+---
+- You have a dataset where 20% of the data points are true anomalies, but you tell the IsolationForest: contamination=10%
+- 🤖 What the Model Does:
+  - Learns the structure of the data using all points.
+  - Computes anomaly scores for all samples (lower score = more "anomalous").
+  - Sorts the scores from lowest to highest.
+  - Picks a threshold so that only the bottom 10% (by score) are labeled as anomalies (-1).
+  - Ignores the rest — even if they are actually anomalies in your domain.
+- ✅ Result:
+  - The model will only label 10% of the data as anomalies — the ones with the lowest scores.
+  - The remaining 10% of true anomalies with slightly higher scores will be missed (i.e., false negatives).
+---
+
+
